@@ -1,0 +1,140 @@
+	/*LO QUE TENEMOS EN EL PUERTO A LO VISUALIZAMOS EN EL PUERTO B*/
+    PROCESSOR 18F4550 ; inicio 
+    ;CONFIG1L dir 300000h 		20
+		CONFIG	PLLDIV=1	 	; 
+		CONFIG	CPUDIV=OSC1_PLL2 ;CUANDO SE USA 	
+		CONFIG	USBDIV=2
+
+		;CONFIG1H dir 300001h	   08
+		CONFIG	FOSC=INTOSCIO_EC	;OSCILADOR INTERNO, RA6 COMO PIN, USB USA OSC EC
+		CONFIG	FCMEN=OFF       ;DESHABILITDO EL MONITOREO DEL RELOJ
+		CONFIG	IESO=OFF
+		;CONFIG2L DIR 300002H	   	38
+		CONFIG	PWRT=ON         ;PWRT HABILITADO
+		CONFIG  BOR=OFF		 	;BROWN OUT RESET DESHABILITADO
+		CONFIG BORV=3			;RESET AL MINIMO VOLTAJE NO UTILZADO EN ESTE CASO
+		CONFIG	VREGEN=ON	 	;REULADOR DE USB ENCENDIDO
+		;CONFIG2H DIR 300003H	   	1E
+		CONFIG	WDT=OFF         ;WACH DOG DESHABILITADO
+		CONFIG WDTPS=32768      ;TIMER DEL WATCHDOG 
+		;CONFIG3H DIR 300005H 	   	81
+		CONFIG	CCP2MX=ON	 	;CCP2 MULTIPLEXADAS CON RC1	
+		CONFIG	PBADEN=OFF      ;PUERTO B PINES DEL 0 AL 4 ENTRADAS DIGITALES
+		CONFIG  LPT1OSC=OFF	 	;TIMER1 CONFIURADO PARA OPERAR EN BAJA POTENCIA
+		CONFIG	MCLRE=ON        ;MASTER CLEAR HABILITADO
+		;CONFIG4L DIR 300006H	   	81
+		CONFIG	STVREN=ON	 	;SI EL STACK SE LLENA CAUSE RESET		
+		CONFIG	LVP=OFF		 	;PROGRAMACIÃN EN BAJO VOLTAJE APAGADO
+		CONFIG	ICPRT=OFF	 	;REGISTRO ICPORT DESHABILITADO
+		CONFIG	XINST=OFF  		;SET DE EXTENCION DE INSTRUCCIONES Y DIRECCIONAMIENTO INDEXADO DESHABILITADO
+		;CONFIG5L DIR 300008H 		0F
+		CONFIG	CP0=OFF		 	;LOS BLOQUES DEL CÃDIGO DE PROGRAMA
+		CONFIG	CP1=OFF         ;NO ESTAN PROTEGIDOS
+		CONFIG	CP2=OFF		 
+		CONFIG	CP3=OFF
+		;CONFIG5H DR 300009H  		80
+		CONFIG	CPB=ON		 	;SECTOR BOOT ESTA PROTEGIDO
+		CONFIG	CPD=OFF		 	;EEPROM N PROTEGIDA
+		;CONFIG6L DIR 30000AH 		0F
+		CONFIG	 WRT0=OFF	 	;BLOQUES NO PROTEGIDOS CONTRA ESCRITURA
+		CONFIG	 WRT1=OFF
+		CONFIG	 WRT2=OFF
+		CONFIG	 WRT3=OFF
+
+		;CONFIG6H DIR 30000BH		A0
+		CONFIG	 WRTC=OFF	 	;CONFIGURACION DE REGISTROS NO PROTEGIDO
+		CONFIG	 WRTB=ON	 	;BLOQUE BOOTEBLE NO PROTEGIDO
+		CONFIG	 WRTD=OFF	 	;EEPROMDE DATOS NO PROTGIDA
+
+		;CONFIG7L DIR 30000CH		0F
+		CONFIG	 EBTR0=OFF	 	;TABLAS DE LETURA NO PROTEGIDAS
+		CONFIG	 EBTR1=OFF
+		CONFIG	 EBTR2=OFF
+		CONFIG	 EBTR3=OFF
+
+		;CONFIG7H DIR 30000DH		40
+		CONFIG	 EBTRB=OFF	 	;TABLAS NO PROTEGIDAS
+#include<xc.inc>
+				/* declarar variables*/
+				;TODAS LAS ETIQUETAS VAN CON :
+DECLARAR_VARIABLES:
+PSECT 	udata_acs ;SECCION DE PROGRAMACION, las variables que estan aqui guardalas en acces bank
+	datoA: DS 1 ; el numero es el numero de bytes que contiene 
+	datoB: DS 1
+;PSECT	udata ;variables en el bnk que elija el mplab
+;PSECT udata_bnk7 colocala variable en el acces bank numero 7
+;-------------------------------------------------------
+; instrucciones}
+VECTOR_RESET:
+PSECT CODE,RELOC=2,ABS
+; ORG 0X00 PUEDE IR O NO EN COMENTARIO
+REINICIO:
+    GOTO INICIO
+;-------------------------------------------------
+CONFIGURACION_SFR:; MAIN:
+PSECT CODE,RELOC=2
+ORG 0X20 ;PARA SALTAR COMPLETAMENTE EL VECTOR INTERRUPCION
+ CON EQU 0X0D
+
+INICIO:
+    CLRF    ADCON0,a ; limpiar el adcon 0, para que quede el registro como digital
+    MOVLW   0X0F ; mueve el 15 a W
+    MOVWF   ADCON1,a ;de w al ADCON1, MUEVO EL 15
+    MOVLW   00000111B ; MUEVO EL VALOR DE 7 A W ; CONFIGURA LOS COMPARADORES PARA ENTRADA DIGITAL
+    MOVWF   CMCON,A ;  PARA LOS PINES RA0-RA3
+    MOVLW   1111111B ; MUEVE FF A W
+    MOVWF   TRISA,a ; EL 0 ES EL ACCESS BANK , habilito al puerto a como entrada
+    CLRF    PORTA,a; 0 EN EL ACCES BANK , limpio
+    MOVLW   00000000B; habilito al puerto b como salida
+    MOVWF   TRISB,0
+    CLRF    PORTB,a
+    GOTO MAIN
+	; Empieza aqui
+
+TABLA:
+    ;ADDWF  fuente,destino,acceso
+    ADDWF   PCL, f,a	 ; Es la intruccion que selecciona la entrada de la tabla (o sea en q lado va a caer creo) w indice a usar,
+			    ; PCL byte bajo del contador, F el resultado se guarda en el registro destino (PCL), a usa el acces bank
+    RETLW   01110110B	 ;H RETLW, Guarda en w la literal se�alada y REGRESA al lugar de donde fue llamda
+    RETLW   00111111B    ;O O sea que regresa a abajo de "CALL TABLA"
+    RETLW   00111000B    ;L
+    RETLW   01110111B    ;A
+    RETLW   01000000B    ;-
+    RETLW   00110000B    ;I
+    RETLW   01110011B    ;P
+    RETLW   01010100B    ;N
+    
+MAIN: 
+    CLRF    CON,a	; Manda CON a 0 jaja
+    
+MAIN_1:
+    MOVF    CON,W,a	; Mueve el valor de CON a W
+    CALL    TABLA	; Llama a la tabla
+    MOVWF   PORTB,a	; Mueve el valor de W a PROTB (El valor de w lo trajo de la tabla)
+    CALL    RET_1SEG	; LLama al retardo de 1seg
+    MOVF    CON,W,a	; Mueve el valor de CON a W
+    SUBLW   00001110B	; hace un W = 00001110B (14) - W
+    BTFSS   STATUS,2,a	; Omitir la siguiente instruccion si CON - 14 = 0. PQ comprueba el bit 2 de STATUS y ese bit tiene la bandera Z
+    GOTO    INCRE
+    GOTO    MAIN
+    
+INCRE:
+    INCF    CON,F,a	; CON = CON + 1
+    INCF    CON,F,a	; CON = CON + 1
+    GOTO    MAIN_1	
+
+RET_1SEG:
+    MOVLW   0X85
+    MOVWF   TMR0H,a
+    MOVLW   0XEE
+    MOVWF   TMR0L,a
+    MOVLW   10010101B	
+    MOVWF   T0CON, a
+    
+CICLO: 
+    BTFSS   INTCON,2,a
+    GOTO    CICLO
+    BCF	    INTCON,2,a
+    RETURN
+    
+    END
