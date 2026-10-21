@@ -100,7 +100,7 @@ TABLA:
     RETLW   00111000B    ;L
     RETLW   01110111B    ;A
     RETLW   01000000B    ;-
-    RETLW   00110000B    ;I
+    RETLW   00110000B    ;i
     RETLW   01110011B    ;P
     RETLW   01010100B    ;N
     
@@ -114,7 +114,7 @@ MAIN_1:
     CALL    RET_1SEG	; LLama al retardo de 1seg
     MOVF    CON,W,a	; Mueve el valor de CON a W
     SUBLW   00001110B	; hace un W = 00001110B (14) - W
-    BTFSS   STATUS,2,a	; Omitir la siguiente instruccion si CON - 14 = 0. PQ comprueba el bit 2 de STATUS y ese bit tiene la bandera Z
+    BTFSS   STATUS,2,a	; Omitir la siguiente instruccion si CON-14=0. PQ comprueba el bit 2 de STATUS y ese bit tiene la bandera Z =1 SKIP
     GOTO    INCRE
     GOTO    MAIN
     
