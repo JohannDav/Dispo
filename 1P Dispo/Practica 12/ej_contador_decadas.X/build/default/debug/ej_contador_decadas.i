@@ -5513,7 +5513,7 @@ VECTOR_RESET:
 PSECT CODE,RELOC=2,ABS
 ; ORG 0X00 PUEDE IR O NO EN COMENTARIO
 REINICIO:
-    GOTO INICIO
+    GOTO INICIO ; Salta al inicio del programa
 ;-------------------------------------------------
 CONFIGURACION_SFR:; MAIN:
 PSECT CODE,RELOC=2
@@ -5526,20 +5526,20 @@ L EQU 0X10A
 ;#Define DEC PORTB
 
 INICIO:
-    CLRF ADCON0,a
-    MOVLW 0X0F
-    MOVWF ADCON1,a
-    MOVLW 00000111B
-    MOVWF CMCON,A
+    CLRF ADCON0,a ; Limpia el registro ADCON0
+    MOVLW 0X0F ; Carga el valor 0x0F en W
+    MOVWF ADCON1,a ; Copia W en el registro ADCON1
+    MOVLW 00000111B ; Carga el valor binario 00000111 en W
+    MOVWF CMCON,A ; Copia W en el registro CMCON
     ;MOVLW 1111111B
     ;MOVWF OSCCON,a
-    MOVLW 00000000B
-    MOVWF TRISA,0
-    CLRF PORTA,a
-    MOVLW 00000000B
-    MOVWF TRISB,0
-    CLRF PORTB,a
-    GOTO MAIN
+    MOVLW 00000000B ; Carga cero en W
+    MOVWF TRISA,0 ; Configura los pines de PORTA como salidas
+    CLRF PORTA,a ; Limpia el registro PORTA
+    MOVLW 00000000B ; Carga cero en W
+    MOVWF TRISB,0 ; Configura los pines de PORTB como salidas
+    CLRF PORTB,a ; Limpia el registro PORTB
+    GOTO MAIN ; Salta al bloque principal
 
 TABLA:
     ADDWF PCL,F,a
@@ -5555,16 +5555,16 @@ TABLA:
     RETLW 0X67
 
 MAIN:
-    CLRF CON_U,a
-    CLRF CON_D,a
+    CLRF CON_U,a ; Inicializa el contador de unidades en cero
+    CLRF CON_D,a ; Inicializa el contador de decenas en cero
 
 MAIN_1:
     MOVF CON_U,W,a
     CALL TABLA
-    MOVWF PORTA,a
+    MOVWF PORTA,a ; Envía el patrón de unidades a PORTA
     MOVF CON_D,W,a
     CALL TABLA
-    MOVWF PORTB,a
+    MOVWF PORTB,a ; Envía el patrón de decenas a PORTB
     CALL RET_1SEG
     MOVLW 0X12
     CPFSEQ CON_U,a
@@ -5572,38 +5572,38 @@ MAIN_1:
     MOVLW 0X12
     CPFSEQ CON_D,a
     GOTO INCRE
-    CLRF CON_U,a
-    CLRF CON_D,a
-    GOTO MAIN_1
+    CLRF CON_U,a ; Reinicia el contador de unidades
+    CLRF CON_D,a ; Reinicia el contador de decenas
+    GOTO MAIN_1 ; Regresa al ciclo principal
 
 INCRE:
     MOVLW 0X12
     CPFSEQ CON_U,a
     GOTO INC
-    CLRF CON_U,a
+    CLRF CON_U,a ; Reinicia el contador de unidades
     INCF CON_D,F,a
     INCF CON_D,F,a
-    GOTO MAIN_1
+    GOTO MAIN_1 ; Regresa al ciclo principal
 
 INC:
     INCF CON_U,F,a
     INCF CON_U,F,a
-    GOTO MAIN_1
+    GOTO MAIN_1 ; Regresa al ciclo principal
 
 RET_1SEG:
     MOVLW 1000
-    MOVWF L,A
+    MOVWF L,A ; Guarda W en el registro L
 
 OPERA1:
     MOVLW 498
-    MOVWF K,a
+    MOVWF K,a ; Guarda W en el registro K
 
 OPERA2:
     NOP
     DECFSZ K,F,a
-    GOTO OPERA2
+    GOTO OPERA2 ; Regresa al bucle OPERA2
     DECFSZ L,F,a
-    GOTO OPERA1
-    RETURN
+    GOTO OPERA1 ; Regresa al bucle OPERA1
+    RETURN ; Regresa al programa que llamó la subrutina
 
 END
