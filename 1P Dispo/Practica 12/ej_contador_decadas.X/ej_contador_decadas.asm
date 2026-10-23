@@ -69,7 +69,7 @@ VECTOR_RESET:
 PSECT CODE,RELOC=2,ABS
 ; ORG 0X00 PUEDE IR O NO EN COMENTARIO
 REINICIO:
-    GOTO INICIO             ; Salta al inicio del programa
+    GOTO INICIO
 ;-------------------------------------------------
 CONFIGURACION_SFR:; MAIN:
 PSECT CODE,RELOC=2
@@ -82,84 +82,84 @@ L	EQU 0X10A
 ;#Define DEC PORTB
  
 INICIO:
-    CLRF    ADCON0,a         ; Limpia el registro ADCON0
-    MOVLW   0X0F             ; Carga el valor 0x0F en W
-    MOVWF   ADCON1,a         ; Copia W en el registro ADCON1
-    MOVLW   00000111B        ; Carga el valor binario 00000111 en W
-    MOVWF   CMCON,A           ; Copia W en el registro CMCON
+    CLRF    ADCON0,a            ; Limpia ADCON0 para deshabilitar o reiniciar la configuración del módulo ADC
+    MOVLW   0X0F                ; Carga el literal 0x0F en el registro de trabajo W
+    MOVWF   ADCON1,a            ; Escribe 0x0F en ADCON1 para configurar los pines analógicos como digitales
+    MOVLW   00000111B           ; Carga el valor binario 00000111 en W
+    MOVWF   CMCON,A             ; Configura CMCON para deshabilitar los comparadores analógicos
     ;MOVLW  1111111B
     ;MOVWF  OSCCON,a
-    MOVLW   00000000B        ; Carga cero en W
-    MOVWF   TRISA,0           ; Configura los pines de PORTA como salidas
-    CLRF    PORTA,a           ; Limpia el registro PORTA
-    MOVLW   00000000B        ; Carga cero en W
-    MOVWF   TRISB,0           ; Configura los pines de PORTB como salidas
-    CLRF    PORTB,a           ; Limpia el registro PORTB
-    GOTO    MAIN              ; Salta al bloque principal
+    MOVLW   00000000B           ; Carga el valor binario 00000000 en W
+    MOVWF   TRISA,0             ; Configura todos los pines de PORTA como salidas
+    CLRF    PORTA,a             ; Apaga inicialmente todas las salidas de PORTA
+    MOVLW   00000000B           ; Carga nuevamente el valor binario 00000000 en W
+    MOVWF   TRISB,0             ; Configura todos los pines de PORTB como salidas
+    CLRF    PORTB,a             ; Apaga inicialmente todas las salidas de PORTB
+    GOTO    MAIN                ; Salta a MAIN para comenzar la ejecución principal
 
 TABLA:
-    ADDWF   PCL,F,a
-    RETLW   0X3F 
-    RETLW   0X06
-    RETLW   0X5B
-    RETLW   0X4F
-    RETLW   0X66
-    RETLW   0X6D
-    RETLW   0X7D
-    RETLW   0X47
-    RETLW   0X7F
-    RETLW   0X67
+    ADDWF   PCL,F,a             ; Suma W al contador de programa bajo para saltar a la entrada correspondiente de la tabla
+    RETLW   0X3F                ; Devuelve en W el patrón correspondiente al dígito 0
+    RETLW   0X06                ; Devuelve en W el patrón correspondiente al dígito 1
+    RETLW   0X5B                ; Devuelve en W el patrón correspondiente al dígito 2
+    RETLW   0X4F                ; Devuelve en W el patrón correspondiente al dígito 3
+    RETLW   0X66                ; Devuelve en W el patrón correspondiente al dígito 4
+    RETLW   0X6D                ; Devuelve en W el patrón correspondiente al dígito 5
+    RETLW   0X7D                ; Devuelve en W el patrón correspondiente al dígito 6
+    RETLW   0X47                ; Devuelve en W el patrón asignado al dígito 7 en esta tabla
+    RETLW   0X7F                ; Devuelve en W el patrón correspondiente al dígito 8
+    RETLW   0X67                ; Devuelve en W el patrón correspondiente al dígito 9
 
 MAIN:
-    CLRF    CON_U,a           ; Inicializa el contador de unidades en cero
-    CLRF    CON_D,a           ; Inicializa el contador de decenas en cero
+    CLRF    CON_U,a             ; Inicializa el contador de unidades en cero
+    CLRF    CON_D,a             ; Inicializa el contador de decenas en cero
 
 MAIN_1:
-    MOVF    CON_U,W,a
-    CALL    TABLA
-    MOVWF   PORTA,a           ; Envía el patrón de unidades a PORTA
-    MOVF    CON_D,W,a
-    CALL    TABLA
-    MOVWF   PORTB,a           ; Envía el patrón de decenas a PORTB
-    CALL    RET_1SEG
-    MOVLW   0X12
-    CPFSEQ  CON_U,a
-    GOTO    INCRE
-    MOVLW   0X12
-    CPFSEQ  CON_D,a
-    GOTO    INCRE
-    CLRF    CON_U,a           ; Reinicia el contador de unidades
-    CLRF    CON_D,a           ; Reinicia el contador de decenas
-    GOTO    MAIN_1             ; Regresa al ciclo principal
+    MOVF    CON_U,W,a            ; Copia el contenido de CON_U al registro W
+    CALL    TABLA                ; Llama a TABLA para obtener el patrón del display de unidades
+    MOVWF   PORTA,a              ; Envía el patrón obtenido al puerto A para mostrar las unidades
+    MOVF    CON_D,W,a             ; Copia el contenido de CON_D al registro W
+    CALL    TABLA                 ; Llama a TABLA para obtener el patrón del display de decenas
+    MOVWF   PORTB,a               ; Envía el patrón obtenido al puerto B para mostrar las decenas
+    CALL    RET_1SEG              ; Llama a la subrutina que genera un retardo aproximado de un segundo
+    MOVLW   0X12                  ; Carga 0x12 (18 decimal) en W, valor usado como índice máximo para el dígito 9
+    CPFSEQ  CON_U,a               ; Compara CON_U con W; si son iguales, omite la siguiente instrucción
+    GOTO    INCRE                 ; Si CON_U no es igual a 0x12, salta a INCRE
+    MOVLW   0X12                  ; Carga nuevamente 0x12 en W para comparar el contador de decenas
+    CPFSEQ  CON_D,a               ; Compara CON_D con W; si son iguales, omite la siguiente instrucción
+    GOTO    INCRE                 ; Si CON_D no es igual a 0x12, salta a INCRE
+    CLRF    CON_U,a               ; Reinicia el contador de unidades a cero
+    CLRF    CON_D,a               ; Reinicia el contador de decenas a cero
+    GOTO    MAIN_1                ; Regresa al ciclo principal para mostrar 00
 
 INCRE:
-    MOVLW   0X12
-    CPFSEQ  CON_U,a
-    GOTO    INC
-    CLRF    CON_U,a           ; Reinicia el contador de unidades
-    INCF    CON_D,F,a
-    INCF    CON_D,F,a
-    GOTO    MAIN_1             ; Regresa al ciclo principal
+    MOVLW   0X12                 ; Carga 0x12 en W para comprobar si las unidades llegaron al índice del 9
+    CPFSEQ  CON_U,a              ; Compara CON_U con W; si son iguales, omite la siguiente instrucción
+    GOTO    INC                  ; Si las unidades todavía no llegaron a 0x12, salta a INC
+    CLRF    CON_U,a              ; Reinicia las unidades a cero cuando llegan al valor máximo
+    INCF    CON_D,F,a            ; Incrementa CON_D en uno y guarda el resultado en el propio registro
+    INCF    CON_D,F,a            ; Incrementa CON_D otra vez para avanzar al siguiente índice de la tabla
+    GOTO    MAIN_1               ; Regresa al ciclo principal para actualizar los displays
 
 INC:
-    INCF    CON_U,F,a
-    INCF    CON_U,F,a
-    GOTO    MAIN_1             ; Regresa al ciclo principal
+    INCF    CON_U,F,a            ; Incrementa CON_U en uno y guarda el resultado en el propio registro
+    INCF    CON_U,F,a            ; Vuelve a incrementar CON_U para avanzar dos posiciones en el índice de la tabla
+    GOTO    MAIN_1               ; Regresa al ciclo principal para mostrar el nuevo valor
 
 RET_1SEG:
-    MOVLW   1000
-    MOVWF   L,A                ; Guarda W en el registro L
+    MOVLW   1000                 ; Carga el literal 1000 en W
+    MOVWF   L,A                  ; Guarda el contenido de W en el registro L
 
 OPERA1:
-    MOVLW   498
-    MOVWF   K,a                ; Guarda W en el registro K
+    MOVLW   498                  ; Carga el literal 498 en W para establecer el contador interno
+    MOVWF   K,a                  ; Guarda el valor de W en el contador K
 
 OPERA2:
-    NOP
-    DECFSZ  K,F,a
-    GOTO    OPERA2             ; Regresa al bucle OPERA2
-    DECFSZ  L,F,a
-    GOTO    OPERA1             ; Regresa al bucle OPERA1
-    RETURN                     ; Regresa al programa que llamó la subrutina
+    NOP                          ; No realiza ninguna operación; consume tiempo de ejecución
+    DECFSZ  K,F,a                ; Decrementa K y omite la siguiente instrucción si el resultado es cero
+    GOTO    OPERA2               ; Si K no llegó a cero, repite el ciclo interior
+    DECFSZ  L,F,a                ; Decrementa L y omite la siguiente instrucción si el resultado es cero
+    GOTO    OPERA1               ; Si L no llegó a cero, reinicia K y repite el ciclo exterior
+    RETURN                       ; Regresa al punto del programa que llamó a esta subrutina
 
-END
+END                              ; Indica el final del archivo de código fuente 

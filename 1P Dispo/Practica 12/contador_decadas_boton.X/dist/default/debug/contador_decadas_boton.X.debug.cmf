@@ -12,7 +12,7 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $build/default/debug/contador_decadas_boton.o
-CODE - 0 0 0 B2 1 2
+CODE - 0 0 0 C8 1 2
 udata_acs COMRAM 1 0 0 2 1 1
 config CONFIG 4 300000 300000 E 1 1
 # %UNUSED Section
@@ -31,11 +31,11 @@ BANK4 400-4FF 1
 BANK5 500-5FF 1
 BANK6 600-6FF 1
 BANK7 700-7FF 1
-CONST B2-7FFF 1
+CONST C8-7FFF 1
 IDLOC 200000-200007 1
 SMALLCONST 800-7FFF 1
-CODE B2-7FFF 1
-BIGRAM B2-7FF 1
+CODE C8-7FFF 1
+BIGRAM C8-7FF 1
 BIGSFR F60-FFF 1
 COMRAM 2-5F 1
 EEDATA F00000-F000FF 1
@@ -54,68 +54,75 @@ MEDIUMCONST 800-7FFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $build/default/debug/contador_decadas_boton.o
-0 CODE ABS >72:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-20 CODE ABS >85:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-22 CODE ABS >86:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-24 CODE ABS >87:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-26 CODE ABS >88:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-28 CODE ABS >89:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-2A CODE ABS >92:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-2C CODE ABS >93:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-2E CODE ABS >94:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-30 CODE ABS >95:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-32 CODE ABS >96:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-34 CODE ABS >97:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-36 CODE ABS >98:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-3A CODE ABS >101:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-3C CODE ABS >102:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-3E CODE ABS >103:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-40 CODE ABS >104:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-42 CODE ABS >105:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-44 CODE ABS >106:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-46 CODE ABS >107:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-48 CODE ABS >108:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-4A CODE ABS >109:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-4C CODE ABS >110:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-4E CODE ABS >111:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-50 CODE ABS >114:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-52 CODE ABS >115:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-54 CODE ABS >118:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-56 CODE ABS >119:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-5A CODE ABS >120:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-5C CODE ABS >121:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-5E CODE ABS >122:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-62 CODE ABS >123:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-64 CODE ABS >124:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-68 CODE ABS >125:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-6A CODE ABS >126:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-6C CODE ABS >127:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-70 CODE ABS >128:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-72 CODE ABS >129:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-74 CODE ABS >130:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-78 CODE ABS >131:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-7A CODE ABS >132:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-7C CODE ABS >133:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-80 CODE ABS >136:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-82 CODE ABS >137:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-84 CODE ABS >138:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-88 CODE ABS >139:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-8A CODE ABS >140:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-8C CODE ABS >141:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-8E CODE ABS >142:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-92 CODE ABS >145:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-94 CODE ABS >146:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-96 CODE ABS >147:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-9A CODE ABS >150:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-9C CODE ABS >151:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-9E CODE ABS >154:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-A0 CODE ABS >155:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-A2 CODE ABS >158:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-A4 CODE ABS >159:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-A6 CODE ABS >160:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-AA CODE ABS >161:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-AC CODE ABS >162:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
-B0 CODE ABS >163:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+0 CODE ABS >77:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+20 CODE ABS >93:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+22 CODE ABS >94:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+24 CODE ABS >95:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+26 CODE ABS >96:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+28 CODE ABS >97:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+2A CODE ABS >99:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+2C CODE ABS >100:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+2E CODE ABS >102:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+30 CODE ABS >103:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+32 CODE ABS >104:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+34 CODE ABS >106:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+36 CODE ABS >107:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+38 CODE ABS >108:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+3A CODE ABS >110:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+3C CODE ABS >112:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+40 CODE ABS >115:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+42 CODE ABS >116:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+44 CODE ABS >117:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+46 CODE ABS >118:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+48 CODE ABS >119:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+4A CODE ABS >120:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+4C CODE ABS >121:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+4E CODE ABS >122:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+50 CODE ABS >123:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+52 CODE ABS >124:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+54 CODE ABS >125:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+56 CODE ABS >126:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+58 CODE ABS >129:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+5A CODE ABS >130:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+5C CODE ABS >131:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+60 CODE ABS >134:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+62 CODE ABS >135:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+66 CODE ABS >136:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+6A CODE ABS >137:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+6C CODE ABS >138:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+70 CODE ABS >140:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+72 CODE ABS >141:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+74 CODE ABS >142:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+76 CODE ABS >143:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+7A CODE ABS >145:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+7C CODE ABS >146:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+7E CODE ABS >147:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+80 CODE ABS >148:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+82 CODE ABS >149:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+86 CODE ABS >151:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+88 CODE ABS >152:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+8C CODE ABS >155:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+8E CODE ABS >156:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+92 CODE ABS >157:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+94 CODE ABS >159:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+96 CODE ABS >160:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+9A CODE ABS >161:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+9C CODE ABS >164:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+9E CODE ABS >165:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+A2 CODE ABS >166:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+A6 CODE ABS >167:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+A8 CODE ABS >168:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+AC CODE ABS >169:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+B0 CODE ABS >172:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+B2 CODE ABS >173:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+B4 CODE ABS >176:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+B6 CODE ABS >177:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+B8 CODE ABS >180:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+BA CODE ABS >181:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+BC CODE ABS >182:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+C0 CODE ABS >183:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+C2 CODE ABS >184:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
+C6 CODE ABS >185:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas_boton.X\contador_decadas_boton.asm
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -128,7 +135,7 @@ B0 CODE ABS >163:C:\Users\jdqg2\.ssh\Dispo\1P Dispo\Practica 12\contador_decadas
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-__Hspace_0 B2 0 ABS 0 - -
+__Hspace_0 C8 0 ABS 0 - -
 __Hspace_1 2 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 60000E 0 ABS 0 - -
@@ -147,7 +154,7 @@ __Hudata 0 0 ABS 0 udata -
 __Hconfig 30000E 0 CONFIG 4 config -
 __Ledata 0 0 ABS 0 edata -
 __Ludata 0 0 ABS 0 udata -
-__HCODE B2 0 ABS 0 CODE -
+__HCODE C8 0 ABS 0 CODE -
 __Hcode 0 0 ABS 0 code -
 __Hdata 0 0 ABS 0 data -
 __LCODE 0 0 ABS 0 CODE -
